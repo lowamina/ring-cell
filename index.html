@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ring Cell Kaduwela | Smartphones, Accessories &amp; Repairs – Concept Demo</title>
+  <meta name="description" content="Ring Cell Kaduwela – latest smartphones, tablets, accessories and professional repairs at the best prices. Genuine products, warranty and easy payment options.">
+  <!-- Demo only: stops Google from listing this page. REMOVE when the real site goes live. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+Sinhala:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #08080a;
+      --card: rgba(255,255,255,.045);
+      --edge: rgba(255,255,255,.09);
+      --red: #ff2d3d;
+      --red-deep: #c4101f;
+      --text: #f2f2f4;
+      --muted: #9a9aa6;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    @supports (overflow: clip) { html, body { overflow-x: clip; } }
+    @media (max-width: 575px) { .row.g-5 { --bs-gutter-x: 1.5rem; margin-left: -.75rem; margin-right: -.75rem; } .row.g-5 > * { padding-left: .75rem; padding-right: .75rem; } }
+    body { font-family: 'Sora', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    h1, h2, h3, h4, h5 { font-weight: 800; letter-spacing: -.5px; color: #fff; }
+    .si { font-family: 'Noto Sans Sinhala', 'Sora', sans-serif; }
+    section { padding: 96px 0; position: relative; }
+    .muted { color: var(--muted); }
+    .red { color: var(--red) !important; }
+    .pill-label { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,45,61,.4); background: rgba(255,45,61,.1); color: #ff7b86; border-radius: 30px; padding: 6px 14px; font-size: .78rem; font-weight: 600; }
+    .title { font-size: clamp(2.1rem, 4.6vw, 3.4rem); line-height: 1.1; }
+    .glass { background: var(--card); border: 1px solid var(--edge); border-radius: 22px; backdrop-filter: blur(10px); }
+
+    .demo-line { background: var(--red); color: #fff; text-align: center; font-size: .8rem; padding: 6px; font-weight: 600; }
+
+    /* Nav */
+    .navbar { background: rgba(8,8,10,.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--edge); }
+    .navbar-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: #fff !important; letter-spacing: 1px; }
+    .navbar-brand img { width: 46px; height: 46px; }
+    .navbar .nav-link { color: var(--muted) !important; font-weight: 600; font-size: .9rem; }
+    .navbar .nav-link:hover { color: #fff !important; }
+    .navbar-toggler { border-color: var(--edge); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    .btn-red { background: linear-gradient(135deg, var(--red), var(--red-deep)); color: #fff; border: 0; border-radius: 14px; padding: 13px 26px; font-weight: 700; box-shadow: 0 10px 30px rgba(255,45,61,.35); }
+    .btn-red:hover { color: #fff; filter: brightness(1.1); }
+    .btn-glass { background: rgba(255,255,255,.06); color: #fff; border: 1px solid var(--edge); border-radius: 14px; padding: 12px 24px; font-weight: 700; }
+    .btn-glass:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+    /* Hero */
+    .hero { padding: 80px 0 90px; overflow: hidden;
+      background: radial-gradient(ellipse 50% 60% at 78% 40%, rgba(255,45,61,.28), transparent 70%), radial-gradient(ellipse 40% 40% at 10% 90%, rgba(255,45,61,.12), transparent 70%), var(--bg); }
+    .hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.04; }
+    .hero h1 .grad { background: linear-gradient(90deg, #ff2d3d, #ff8a5c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .chips span { border: 1px solid var(--edge); background: var(--card); border-radius: 12px; padding: 9px 14px; font-size: .85rem; display: inline-flex; gap: 8px; align-items: center; }
+    .chips i { color: var(--red); }
+    /* CSS phone */
+    .phone-stage { position: relative; height: 520px; display: flex; align-items: center; justify-content: center; }
+    .phone { position: absolute; width: 230px; height: 470px; border-radius: 40px; background: linear-gradient(160deg, #2a2a30, #0d0d10); border: 2px solid #3a3a42; box-shadow: 0 40px 80px rgba(0,0,0,.6), 0 0 80px rgba(255,45,61,.25); padding: 12px; }
+    .phone .screen { width: 100%; height: 100%; border-radius: 30px; background: radial-gradient(ellipse at 30% 20%, #ff2d3d, #5b0710 55%, #12030a); display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; }
+    .phone .screen img { width: 70%; }
+    .phone .screen.has-img img { display: none; }
+    .phone.back { transform: translateX(-110px) rotate(-12deg) scale(.88); opacity: .75; }
+    .phone.back .screen { background: linear-gradient(160deg, #1d2a44, #0a0f1c); }
+    .phone.front { transform: translateX(40px) rotate(6deg); }
+    .phone .notch { position: absolute; top: 20px; left: 50%; width: 70px; height: 18px; border-radius: 10px; background: #000; transform: translateX(-50%); }
+    .float-badge { position: absolute; right: 0; bottom: 60px; padding: 14px 18px; border-radius: 16px; z-index: 3; }
+    .float-badge b { display: block; font-size: 1.05rem; }
+    @media (max-width: 991px) { .phone-stage { height: 430px; } .phone { width: 190px; height: 390px; } .phone.back { transform: translateX(-80px) rotate(-12deg) scale(.88); } .float-badge { right: 4px; bottom: 20px; } }
+
+    /* Trust strip */
+    .trust { border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge); padding: 26px 0; }
+    .trust .t { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: .92rem; }
+    .trust .t i { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,45,61,.12); color: var(--red); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+
+    /* Shop */
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .tab { background: var(--card); border: 1px solid var(--edge); color: var(--muted); border-radius: 30px; padding: 9px 20px; font-weight: 600; font-size: .9rem; }
+    .tab.on, .tab:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .item { padding: 22px; height: 100%; display: flex; flex-direction: column; transition: .25s; }
+    .item:hover { transform: translateY(-5px); border-color: rgba(255,45,61,.45); }
+    .item .pic { aspect-ratio: 4/3; border-radius: 16px; background: radial-gradient(ellipse at 50% 30%, rgba(255,45,61,.25), rgba(255,255,255,.02) 70%); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; position: relative; }
+    .item .pic > i { font-size: 3.4rem; color: rgba(255,255,255,.85); }
+    .item .pic.has-img > i { display: none; }
+    .item .badge-free { position: absolute; top: 10px; left: 10px; background: var(--red); color: #fff; font-size: .7rem; font-weight: 800; padding: 4px 10px; border-radius: 20px; }
+    .item h5 { margin-bottom: 6px; }
+    .item ul { list-style: none; padding: 0; margin: 0 0 16px; color: var(--muted); font-size: .88rem; }
+    .item li { padding: 3px 0; }
+    .item li i { color: var(--red); margin-right: 6px; }
+    .item .btn { margin-top: auto; }
+    .hide { display: none !important; }
+    .brands { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; margin-top: 46px; color: #6e6e78; font-weight: 800; font-size: 1.2rem; letter-spacing: 1px; }
+
+    /* Easy payment */
+    .pay { padding: 34px; }
+    .pay label { font-size: .8rem; font-weight: 600; color: var(--muted); margin-bottom: 8px; display: block; }
+    .pay .form-control { background: rgba(0,0,0,.35); border: 1px solid var(--edge); color: #fff; border-radius: 14px; padding: 14px; font-size: 1.2rem; font-weight: 700; }
+    .pay .form-control:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,45,61,.2); }
+    .months { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .months button { background: rgba(0,0,0,.35); border: 1px solid var(--edge); color: #fff; border-radius: 14px; padding: 14px 6px; font-weight: 700; }
+    .months button small { display: block; font-weight: 500; color: var(--muted); font-size: .72rem; }
+    .months button.on { background: var(--red); border-color: var(--red); }
+    .months button.on small { color: #ffd6da; }
+    .monthly { border-radius: 18px; background: linear-gradient(135deg, rgba(255,45,61,.22), rgba(255,45,61,.05)); border: 1px solid rgba(255,45,61,.4); padding: 26px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+    .monthly .big { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; color: #fff; line-height: 1; }
+    .plan-table { width: 100%; font-size: .88rem; margin-top: 14px; }
+    .plan-table td { padding: 7px 4px; border-bottom: 1px solid var(--edge); color: var(--muted); }
+    .plan-table td:last-child { text-align: right; color: #fff; font-weight: 600; }
+
+    /* Repair */
+    .issues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .issue { background: var(--card); border: 1px solid var(--edge); border-radius: 16px; padding: 16px 10px; text-align: center; cursor: pointer; font-weight: 600; font-size: .85rem; transition: .2s; }
+    .issue i { display: block; font-size: 1.6rem; color: var(--red); margin-bottom: 6px; }
+    .issue.on { border-color: var(--red); background: rgba(255,45,61,.14); }
+    @media (max-width: 575px) { .issues { grid-template-columns: repeat(2, 1fr); } .months { grid-template-columns: repeat(2, 1fr); } .pay { padding: 22px; } }
+    .rep-form .form-control, .rep-form .form-select { background: rgba(0,0,0,.35); border: 1px solid var(--edge); color: #fff; border-radius: 12px; padding: 12px; }
+    .rep-form .form-select option { color: #000; }
+    .rep-form .form-control::placeholder { color: #6e6e78; }
+    .rep-form .form-control:focus, .rep-form .form-select:focus { border-color: var(--red); box-shadow: none; }
+
+    /* Contact */
+    .c-line { display: flex; gap: 14px; margin-bottom: 16px; }
+    .c-line i { color: var(--red); font-size: 1.2rem; }
+    .c-line a { color: var(--text); text-decoration: none; }
+    .areas span { display: inline-block; border: 1px solid var(--edge); border-radius: 20px; padding: 5px 12px; margin: 0 6px 8px 0; font-size: .8rem; color: var(--muted); }
+    .map iframe { width: 100%; height: 100%; min-height: 360px; border: 1px solid var(--edge); border-radius: 22px; filter: grayscale(.3) invert(.92) hue-rotate(180deg); }
+
+    footer { border-top: 1px solid var(--edge); padding: 28px 0; color: var(--muted); font-size: .88rem; }
+    footer img { width: 40px; height: 40px; }
+
+    .wa { position: fixed; right: 18px; bottom: 18px; width: 58px; height: 58px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; z-index: 999; box-shadow: 0 6px 20px rgba(0,0,0,.5); }
+    .wa:hover { color: #fff; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- DEMO NOTICE: remove after the owner approves -->
+  <div class="demo-line">Concept demo for Ring Cell Kaduwela · prices and photos are samples</div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home"><img src="logo.png" alt="Ring Cell logo"> RING CELL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pay">Easy Payment</a></li>
+          <li class="nav-item"><a class="nav-link" href="#repair">Repairs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2"><a class="btn btn-red btn-sm" href="https://wa.me/94773801000" target="_blank"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="home">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 reveal">
+          <span class="pill-label"><i class="bi bi-geo-alt-fill"></i> Avissawella Road, Kaduwela</span>
+          <h1 class="mt-3">Latest smartphones.<br><span class="grad">Best prices.</span></h1>
+          <p class="lead muted my-4" style="max-width:500px">Your trusted mobile phone store for smartphones, tablets, accessories and professional repairs. Genuine products, quality service and the best prices.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#shop" class="btn btn-red">Shop now</a>
+            <a href="#pay" class="btn btn-glass">Easy payment plans</a>
+          </div>
+          <div class="chips">
+            <span><i class="bi bi-phone"></i>Smartphones</span>
+            <span><i class="bi bi-tools"></i>Repairs</span>
+            <span><i class="bi bi-headphones"></i>Accessories</span>
+            <span><i class="bi bi-tag"></i>Best prices</span>
+          </div>
+        </div>
+        <div class="col-lg-6 reveal">
+          <div class="phone-stage">
+            <div class="phone back"><div class="notch"></div><div class="screen"></div></div>
+            <div class="phone front"><div class="notch"></div><div class="screen" data-img="phone1.jpg"><img src="logo.png" alt=""></div></div>
+            <div class="glass float-badge"><span class="muted small">Easy payment</span><b class="si">පහසු ගෙවීමේ ක්‍රම</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== TRUST ===== -->
+  <div class="trust">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-6 col-lg-3"><div class="t"><i class="bi bi-patch-check"></i>100% Genuine Products</div></div>
+        <div class="col-6 col-lg-3"><div class="t"><i class="bi bi-shield-check"></i>Warranty &amp; After-Sales</div></div>
+        <div class="col-6 col-lg-3"><div class="t"><i class="bi bi-person-gear"></i>Professional Service</div></div>
+        <div class="col-6 col-lg-3"><div class="t"><i class="bi bi-people"></i>Trusted by Thousands</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SHOP ===== -->
+  <section id="shop">
+    <div class="container">
+      <div class="text-center mb-4 reveal"><span class="pill-label">New arrivals</span><h2 class="title mt-3">Shop the <span class="red">latest</span></h2><p class="muted">Sample items. Ring Cell's real stock and prices go here.</p></div>
+      <div class="tabs mb-5 reveal" id="tabs">
+        <button class="tab on" data-c="all">All</button><button class="tab" data-c="tab">Tablets</button><button class="tab" data-c="phone">Smartphones</button><button class="tab" data-c="acc">Accessories</button>
+      </div>
+      <div class="row g-4" id="items">
+        <!-- Tablets (from Ring Cell's own post) -->
+        <div class="col-md-6 col-lg-4 reveal" data-c="tab"><div class="glass item">
+          <div class="pic" data-img="t1.jpg"><span class="badge-free">FREE GIFTS</span><i class="bi bi-tablet-landscape"></i></div>
+          <h5>A9 Pro Tablet</h5>
+          <ul><li><i class="bi bi-check2"></i>8.68" display</li><li><i class="bi bi-check2"></i>8GB RAM (4+4) · 64GB storage</li><li><i class="bi bi-check2"></i>6000mAh battery</li><li><i class="bi bi-check2"></i>Easy payment up to 12 months</li></ul>
+          <a class="btn btn-glass w-100 ask" data-n="A9 Pro Tablet" href="#" target="_blank"><i class="bi bi-whatsapp me-2"></i>Ask today's price</a>
+        </div></div>
+        <div class="col-md-6 col-lg-4 reveal" data-c="tab"><div class="glass item">
+          <div class="pic" data-img="t2.jpg"><span class="badge-free">FREE GIFTS</span><i class="bi bi-tablet-landscape"></i></div>
+          <h5>A10 Pro Tablet</h5>
+          <ul><li><i class="bi bi-check2"></i>10.1" Incell display</li><li><i class="bi bi-check2"></i>8GB RAM (4+4) · 128GB storage</li><li><i class="bi bi-check2"></i>6000mAh battery</li><li><i class="bi bi-check2"></i>Easy payment up to 12 months</li></ul>
+          <a class="btn btn-glass w-100 ask" data-n="A10 Pro Tablet" href="#" target="_blank"><i class="bi bi-whatsapp me-2"></i>Ask today's price</a>
+        </div></div>
+        <div class="col-md-6 col-lg-4 reveal" data-c="tab"><div class="glass item">
+          <div class="pic" data-img="t3.jpg"><span class="badge-free">FREE GIFTS</span><i class="bi bi-tablet-landscape"></i></div>
+          <h5>A12 Pro Tablet</h5>
+          <ul><li><i class="bi bi-check2"></i>11.1" FHD IPS display</li><li><i class="bi bi-check2"></i>12GB RAM (6+6) · 128GB storage</li><li><i class="bi bi-check2"></i>8000mAh battery</li><li><i class="bi bi-check2"></i>Easy payment up to 12 months</li></ul>
+          <a class="btn btn-glass w-100 ask" data-n="A12 Pro Tablet" href="#" target="_blank"><i class="bi bi-whatsapp me-2"></i>Ask today's price</a>
+        </div></div>
+        <!-- Smartphones -->
+        <div class="col-md-6 col-lg-4 reveal" data-c="phone"><div class="glass item">
+          <div class="pic" data-img="phone2.jpg"><i class="bi bi-phone"></i></div>
+          <h5>Flagship Smartphones</h5>
+          <ul><li><i class="bi bi-check2"></i>Latest top models in stock</li><li><i class="bi bi-check2"></i>Brand-new, genuine units</li><li><i class="bi bi-check2"></i>Warranty included</li></ul>
+          <a class="btn btn-glass w-100 ask" data-n="flagship smartphones" href="#" target="_blank"><i class="bi bi-whatsapp me-2"></i>Check availability</a>
+        </div></div>
+        <div class="col-md-6 col-lg-4 reveal" data-c="phone"><div class="glass item">
+          <div class="pic" data-img="phone3.jpg"><i class="bi bi-phone"></i></div>
+          <h5>Budget &amp; Mid-Range Phones</h5>
+          <ul><li><i class="bi bi-check2"></i>Great phones for every budget</li><li><i class="bi bi-check2"></i>Perfect for students</li><li><i class="bi bi-check2"></i>Easy payment available</li></ul>
+          <a class="btn btn-glass w-100 ask" data-n="budget and mid-range phones" href="#" target="_blank"><i class="bi bi-whatsapp me-2"></i>Check availability</a>
+        </div></div>
+        <!-- Accessories -->
+        <div class="col-md-6 col-lg-4 reveal" data-c="acc"><div class="glass item">
+          <div class="pic"><i class="bi bi-earbuds"></i></div>
+          <h5>Accessories</h5>
+          <ul><li><i class="bi bi-check2"></i>Chargers, cables &amp; power banks</li><li><i class="bi bi-check2"></i>Earbuds, headphones &amp; smart watches</li><li><i class="bi bi-check2"></i>Back covers &amp; tempered glass</li></ul>
+          <a class="btn btn-glass w-100 ask" data-n="accessories" href="#" target="_blank"><i class="bi bi-whatsapp me-2"></i>Ask about accessories</a>
+        </div></div>
+      </div>
+      <div class="brands reveal"><span>APPLE</span><span>SAMSUNG</span><span>XIAOMI</span><span>HUAWEI</span><span>VIVO</span><span>OPPO</span><span>REALME</span><span>HONOR</span></div>
+      <p class="text-center muted small mt-2">Brand list is a sample. Ring Cell can confirm the brands they stock.</p>
+    </div>
+  </section>
+
+  <!-- ===== EASY PAYMENT ===== -->
+  <section id="pay" class="pt-0">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="pill-label si">මොබයිල් ෆෝන් පහසු ගෙවීමේ ක්‍රමයට</span>
+        <h2 class="title mt-3">Easy payment <span class="red">calculator</span></h2>
+        <p class="muted mx-auto" style="max-width:560px">Enter the phone price and choose a plan to see a rough monthly amount.</p>
+      </div>
+      <div class="glass pay reveal">
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <label>Phone or tablet price (Rs.)</label>
+            <input id="price" type="number" class="form-control mb-4" value="65000" min="1000" step="500" oninput="payCalc()">
+            <label>Choose your plan</label>
+            <div class="months" id="months">
+              <button data-m="3">3<small>months</small></button><button data-m="6">6<small>months</small></button><button data-m="9">9<small>months</small></button><button class="on" data-m="12">12<small>months</small></button>
+            </div>
+            <table class="plan-table" id="planTable"></table>
+          </div>
+          <div class="col-lg-5">
+            <div class="monthly">
+              <span class="muted small">About</span>
+              <div class="big" id="perMonth">Rs. 0</div>
+              <span class="muted small mt-1" id="perLabel">per month</span>
+              <small class="muted mt-3">Sample estimate only, split equally. Any fees, the advance and approval depend on the payment partner. Ring Cell will confirm the exact plan.</small>
+              <a id="payAsk" href="#" target="_blank" class="btn btn-red w-100 mt-3"><i class="bi bi-whatsapp me-2"></i>Ask about this plan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REPAIR ===== -->
+  <section id="repair" class="pt-0">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5 reveal">
+          <span class="pill-label"><i class="bi bi-tools"></i> Professional repairs</span>
+          <h2 class="title mt-3">Phone broken?<br><span class="red">We'll fix it.</span></h2>
+          <p class="muted mt-3">Choose the problem, tell us your phone model, and send the request on WhatsApp. We'll reply with a price and time.</p>
+          <div class="shop-photo glass mt-4" data-img="shop.jpg" style="aspect-ratio:16/9;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;color:var(--muted)"><span><i class="bi bi-shop me-2 red"></i>Shop photo</span></div>
+        </div>
+        <div class="col-lg-7 reveal">
+          <div class="glass pay">
+            <label>1. What's the problem?</label>
+            <div class="issues mb-4" id="issues">
+              <div class="issue on" data-v="Broken screen"><i class="bi bi-phone-flip"></i>Broken screen</div>
+              <div class="issue" data-v="Battery problem"><i class="bi bi-battery-half"></i>Battery</div>
+              <div class="issue" data-v="Charging port"><i class="bi bi-lightning-charge"></i>Charging</div>
+              <div class="issue" data-v="Camera problem"><i class="bi bi-camera"></i>Camera</div>
+              <div class="issue" data-v="Water damage"><i class="bi bi-droplet"></i>Water damage</div>
+              <div class="issue" data-v="Slow / software problem"><i class="bi bi-cpu"></i>Software / slow</div>
+            </div>
+            <label>2. Your phone</label>
+            <div class="row g-3 rep-form">
+              <div class="col-md-5"><select id="rBrand" class="form-select"><option>Apple</option><option>Samsung</option><option>Xiaomi / Redmi</option><option>Huawei</option><option>Vivo</option><option>Oppo</option><option>Other</option></select></div>
+              <div class="col-md-7"><input id="rModel" class="form-control" placeholder="Model, e.g. Galaxy A54"></div>
+              <div class="col-12"><input id="rName" class="form-control" placeholder="Your name"></div>
+              <div class="col-12"><button class="btn btn-red w-100" onclick="repair()"><i class="bi bi-whatsapp me-2"></i>Get a repair quote</button></div>
+              <div class="col-12"><small id="rMsg" style="color:#ff7b86"></small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="pt-0">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5 reveal">
+          <div class="glass p-4 h-100">
+            <span class="pill-label">Visit the store</span>
+            <h2 class="title mt-3 mb-4" style="font-size:2.3rem">Find <span class="red">Ring Cell</span></h2>
+            <div class="c-line"><i class="bi bi-geo-alt-fill"></i><div>Gunawardhana Building,<br>Avissawella Road, Kaduwela</div></div>
+            <div class="c-line"><i class="bi bi-telephone-fill"></i><a href="tel:+94779953666">+94 77 995 3666</a></div>
+            <div class="c-line"><i class="bi bi-whatsapp"></i><a href="https://wa.me/94773801000" target="_blank">+94 77 380 1000</a></div>
+            <div class="c-line"><i class="bi bi-envelope-fill"></i><a href="mailto:ringcell.phonekaduwela@gmail.com">ringcell.phonekaduwela@gmail.com</a></div>
+            <div class="c-line"><i class="bi bi-clock-fill"></i><div>Opening hours <span class="muted small">(to be confirmed)</span></div></div>
+            <div class="muted small mb-2 mt-3">Serving</div>
+            <div class="areas"><span>Kaduwela</span><span>Malabe</span><span>Biyagama</span><span>Hokandara South</span></div>
+          </div>
+        </div>
+        <div class="col-lg-7 map reveal"><iframe src="https://maps.google.com/maps?q=Ring%20Cell%20Avissawella%20Road%20Kaduwela&z=15&output=embed" loading="lazy" title="Map to Ring Cell Kaduwela"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span class="d-flex align-items-center gap-2"><img src="logo.png" alt=""> <b class="text-white">Ring Cell Kaduwela</b></span>
+      <span>&copy; <span id="yr"></span> Ring Cell, Kaduwela</span>
+      <span>Website by Lowamina Pigera</span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/94773801000" target="_blank" class="wa" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const WHATSAPP = '94773801000';
+    const wa = t => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(t)}`;
+    const rs = n => 'Rs. ' + Math.round(n).toLocaleString('en-LK');
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // ---- Shop filter + "ask" links ----
+    document.querySelectorAll('#tabs .tab').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('#tabs .tab').forEach(x => x.classList.remove('on')); t.classList.add('on');
+      document.querySelectorAll('#items > [data-c]').forEach(c => c.classList.toggle('hide', t.dataset.c !== 'all' && c.dataset.c !== t.dataset.c));
+    }));
+    document.querySelectorAll('.ask').forEach(a => a.href = wa(`Hi Ring Cell! I'd like to know the price and availability of: ${a.dataset.n}.`));
+
+    // ---- Easy payment calculator (equal split, sample only) ----
+    let months = 12;
+    document.querySelectorAll('#months button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('#months button').forEach(x => x.classList.remove('on')); b.classList.add('on');
+      months = +b.dataset.m; payCalc();
+    }));
+    function payCalc() {
+      const price = +document.getElementById('price').value;
+      const ok = price >= 1000 && price <= 2000000;
+      document.getElementById('perMonth').textContent = ok ? rs(price / months) : 'Rs. —';
+      document.getElementById('perLabel').textContent = ok ? `per month for ${months} months` : 'Enter a price from Rs. 1,000';
+      document.getElementById('planTable').innerHTML = ok ? [3, 6, 9, 12].map(m =>
+        `<tr><td>${m} months</td><td>${rs(price / m)} / month</td></tr>`).join('') : '';
+      document.getElementById('payAsk').href = wa(ok
+        ? `Hi Ring Cell! I'm interested in an easy payment plan.\nPhone price: ${rs(price)}\nPlan: ${months} months (about ${rs(price / months)} a month on your website).\nCan you tell me the details?`
+        : `Hi Ring Cell! I'd like to know about your easy payment plans.`);
+    }
+    payCalc();
+
+    // ---- Repair request ----
+    document.querySelectorAll('#issues .issue').forEach(el => el.addEventListener('click', () => {
+      document.querySelectorAll('#issues .issue').forEach(x => x.classList.remove('on')); el.classList.add('on');
+    }));
+    function repair() {
+      const model = document.getElementById('rModel').value.trim(), name = document.getElementById('rName').value.trim(), msg = document.getElementById('rMsg');
+      if (!model || !name) { msg.textContent = 'Please enter your phone model and name.'; return; }
+      msg.textContent = '';
+      const issue = document.querySelector('#issues .issue.on').dataset.v;
+      const text = `Hi Ring Cell! I need a repair quote.\nName: ${name}\nPhone: ${document.getElementById('rBrand').value} ${model}\nProblem: ${issue}`;
+      window.open(wa(text), '_blank');
+    }
+
+    // Photo slots: put photos in the "img" folder (see img/PHOTOS.txt) and they appear
+    document.querySelectorAll('[data-img]').forEach(el => {
+      const src = 'img/' + el.dataset.img, test = new Image();
+      test.onload = () => { el.style.backgroundImage = `url("${src}")`; el.classList.add('has-img'); };
+      test.src = src;
+    });
+
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+    }), { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
